@@ -2,22 +2,15 @@ package involveme_tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import involveme_pageobjects.AnalyticsPage;
 import involveme_pageobjects.FaqPage;
-import involveme_pageobjects.LoginPage;
-import involveme_pageobjects.StartPage;
 import involveme_pageobjects.TopMenu;
 
 public class AnalyticsPageTest extends BaseTest {
 
 	// login to website & go to Analytics page
 	@Test
-	public void tc01_login() {
-		StartPage startpage = new StartPage(driver);
-		startpage.openLoginPage();
-		LoginPage loginpage = new LoginPage(driver);
-		loginpage.login("mmatok19@gmail.com", "Michal123456");
+	public void tc01_goToPage() {
 		// go to Analytics page
 		TopMenu menu = new TopMenu(driver);
 		menu.goToAnalytics();
@@ -28,12 +21,12 @@ public class AnalyticsPageTest extends BaseTest {
 	@Test
 	public void tc02_GoToAnalytics() {
 		AnalyticsPage analyticsPage = new AnalyticsPage(driver);
-		analyticsPage.ProjectUserTracking();
+		analyticsPage.projectUserTracking();
 		String actual = analyticsPage.submissionsMessage();
 		// check message below submissions tab
 		Assert.assertEquals(actual, "No submission data found.");
 		sleep(2000);
-		analyticsPage.OverallAnalytics();
+		analyticsPage.overallAnalytics();
 	}
 
 	// Test #31
@@ -43,8 +36,7 @@ public class AnalyticsPageTest extends BaseTest {
 		analyticsPage.chooseProject("payment-project");
 		sleep(2000);
 		// check message
-		analyticsPage.isPublishMessage(
-				"This project is in draft now so other people can't see it. After you publish it, the analytics will reset.");
+		analyticsPage.isPublishMessage("This project is in draft now so other people can't see it. After you publish it, the analytics will reset.");
 	}
 
 	// Test #32
@@ -57,11 +49,11 @@ public class AnalyticsPageTest extends BaseTest {
 		System.out.println(url);
 		// check the header in the page opened
 		FaqPage faqPage = new FaqPage(driver);
-		String actual = faqPage.PersonalDataHeader();
+		String actual = faqPage.personalDataHeader();
 		Assert.assertEquals(actual, "How to collect personal information (names, email, ...)");
 		sleep(500);
 		faqPage.close();
-		tabSwitch();
+		analyticsPage.backToMainWindow();	
 	}
 
 	// Test #33
@@ -86,7 +78,6 @@ public class AnalyticsPageTest extends BaseTest {
 		sleep(2000);
 		// close the tab
 		analyticsPage.close();
-		tabSwitch();
+		analyticsPage.backToMainWindow();
 	}
-
 }

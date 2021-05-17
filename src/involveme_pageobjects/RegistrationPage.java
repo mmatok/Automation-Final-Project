@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class RegistrationPage extends BasePage {
+public class RegistrationPage extends TopMenu {
 
 	@FindBy(css = "[type='submit']")
 	WebElement registerButton;
@@ -18,7 +18,7 @@ public class RegistrationPage extends BasePage {
 	}
 
 	// for test #10
-	public void RegisterButton() {
+	public void registerButton() {
 		click(registerButton);
 	}
 
@@ -31,5 +31,4 @@ public class RegistrationPage extends BasePage {
 	public void gotoLogin() {
 		click(loginbutton);
 	}
-
 }

@@ -2,25 +2,18 @@ package involveme_tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import involveme_pageobjects.FaqPage;
 import involveme_pageobjects.IntegrationsPage;
-import involveme_pageobjects.LoginPage;
-import involveme_pageobjects.StartPage;
-import involveme_pageobjects.TopMenu;
+import involveme_pageobjects.ProjectsPage;
 
 public class IntegrationsPageTest extends BaseTest {
 
 	// login to website & go to Integrations page
 	@Test
-	public void tc01_login() {
-		StartPage startpage = new StartPage(driver);
-		startpage.openLoginPage();
-		LoginPage loginpage = new LoginPage(driver);
-		loginpage.login("mmatok19@gmail.com", "Michal123456");
+	public void tc01_goToPage() {
 		// go to Integrations page
-		TopMenu menu = new TopMenu(driver);
-		menu.goToIntegrations();
+		ProjectsPage pp = new ProjectsPage(driver);
+		pp.goToIntegrations();
 		sleep(2000);
 	}
 
@@ -37,8 +30,7 @@ public class IntegrationsPageTest extends BaseTest {
 		sleep(500);
 		// go back to integrations page
 		faqPage.close();
-		tabSwitch();
-		sleep(500);
+		integrationsPage.backToMainWindow();
 	}
 
 	// Test #36
@@ -62,5 +54,4 @@ public class IntegrationsPageTest extends BaseTest {
 		// close the tab
 		integrationsPage.close();
 	}
-
 }

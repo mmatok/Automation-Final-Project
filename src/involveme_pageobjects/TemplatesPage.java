@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class TemplatesPage extends BasePage {
+public class TemplatesPage extends TopMenu {
 
 	@FindBy(css = ".col-md-12.c-list-header > .e-title")
 	WebElement templatesPageHeader;
@@ -61,7 +61,6 @@ public class TemplatesPage extends BasePage {
 			}
 		}
 		sleep(2000);
-
 	}
 
 	// for test #14
@@ -80,7 +79,6 @@ public class TemplatesPage extends BasePage {
 				break;
 			}
 		}
-
 	}
 
 	// for test #14
@@ -107,10 +105,7 @@ public class TemplatesPage extends BasePage {
 				WebElement chooseButton = el.findElement(By.cssSelector(".btn.btn-primary"));
 				click(chooseButton);
 				break;
-
 			}
-
 		}
 	}
-
 }

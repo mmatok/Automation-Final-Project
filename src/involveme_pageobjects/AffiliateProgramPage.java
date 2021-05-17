@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class AffiliateProgramPage extends BasePage {
+public class AffiliateProgramPage extends TopMenu {
 
 	@FindBy(css = "#app-layout > div.container > p > a")
 	WebElement termsLink;
@@ -34,7 +34,7 @@ public class AffiliateProgramPage extends BasePage {
 	}
 
 	// for test #38 (){
-	public void AffiliateProgramTerms() {
+	public void affiliateProgramTerms() {
 		// click on the link "Affiliate program terms"
 		click(termsLink);
 	}

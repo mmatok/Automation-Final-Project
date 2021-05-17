@@ -2,10 +2,7 @@ package involveme_tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import involveme_pageobjects.EditorPage;
-import involveme_pageobjects.LoginPage;
-import involveme_pageobjects.StartPage;
 import involveme_pageobjects.TemplatesPage;
 import involveme_pageobjects.TopMenu;
 
@@ -13,11 +10,7 @@ public class TemplatesPageTests extends BaseTest {
 
 	// login to website & go to Templates page
 	@Test
-	public void tc01_login() {
-		StartPage startpage = new StartPage(driver);
-		startpage.openLoginPage();
-		LoginPage loginpage = new LoginPage(driver);
-		loginpage.login("mmatok19@gmail.com", "Michal123456");
+	public void tc01_goToPage() {
 		// go to templates page
 		TopMenu menu = new TopMenu(driver);
 		menu.goToTemplates();
@@ -55,7 +48,6 @@ public class TemplatesPageTests extends BaseTest {
 		Assert.assertEquals(actual, "https://app.involve.me/template/iq-test");
 		sleep(2000);
 		templatesPage.closePreview();
-
 	}
 
 	// Test #15
@@ -71,7 +63,5 @@ public class TemplatesPageTests extends BaseTest {
 		sleep(2000);
 		// check the Name of the project
 		Assert.assertTrue(editorPage.isCorrectProjectName("Registration Form Michal"));
-
 	}
-
 }

@@ -2,6 +2,7 @@ package involveme_tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import involveme_pageobjects.IntegrationsPage;
 import involveme_pageobjects.LoginPage;
 import involveme_pageobjects.ProjectsPage;
@@ -12,6 +13,10 @@ import involveme_pageobjects.TemplatesPage;
 
 
 public class LoginPageTest extends BaseTest {
+
+	@Override
+	public void setupLogin() {
+	}
 
 	// general test: Open Login Page
 	@Test
@@ -34,8 +39,8 @@ public class LoginPageTest extends BaseTest {
 		Assert.assertEquals(actual, "NEW FEATURE:" + "\n" + "CREATE VISUAL CUSTOMER JOURNEYS");
 		sleep(2000);
 		// close the current tab
-		loginpage.close();
-		tabSwitch();
+		startpage.close();
+		loginpage.backToMainWindow();
 	}
 
 	// test #6
@@ -46,13 +51,13 @@ public class LoginPageTest extends BaseTest {
 		loginpage.forgotPasswordPage();
 		// enter email and click on "send Password Reset Link"
 		ResetYourPasswordPage resetPass = new ResetYourPasswordPage(driver);
-		resetPass.SendResetLink("email@test.com");
+		resetPass.sendResetLink("email@test.com");
 		// check the error message
-		String actual = resetPass.ErrorMsg();
+		String actual = resetPass.errorMsg();
 		Assert.assertEquals(actual, "We can't find a user with that e-mail address.");
 		sleep(2000);
 		// go back to login page
-		resetPass.GoToLoginPage();
+		resetPass.goToLoginPage();
 	}
 
 	// test #7
@@ -108,7 +113,7 @@ public class LoginPageTest extends BaseTest {
 		loginpage.openCreateAnAccount();
 		// click on register button
 		RegistrationPage register = new RegistrationPage(driver);
-		register.RegisterButton();
+		register.registerButton();
 		// check the error message
 		String actual = register.errormsg();
 		Assert.assertEquals(actual, "This field is required.");
@@ -139,5 +144,4 @@ public class LoginPageTest extends BaseTest {
 		String actual = projectsPage.getLoggedInName();
 		Assert.assertEquals(actual, "Michal Chen");
 	}
-
 }

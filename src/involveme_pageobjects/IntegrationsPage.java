@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class IntegrationsPage extends BasePage {
+public class IntegrationsPage extends TopMenu {
 
 	@FindBy(css = ".e-title")
 	WebElement integrationsPageHeader;
@@ -47,37 +47,18 @@ public class IntegrationsPage extends BasePage {
 	public void covertKitintegration() {
 		click(convertKitButton);
 		tabSwitch();
-
 	}
 
 	// for test #36
 	public void deskLinkUnderZapier(String service, String platform, String email) {
-		// click on desk under zapiar
-		// scrollDown(1000);
-		// sleep(500);
-		// List<WebElement> imagesList = driver.findElements(By.cssSelector(".row"));
-		// for (WebElement el : imagesList) {
-		// if (getText(el).equalsIgnoreCase(service)) {
-		// hoverWithMouse(el);
-		// el.findElements(By.cssSelector(".integration-img a img"));
-		// for (WebElement elImage : imagesList) {
-		// if (getText(elImage).equalsIgnoreCase(platform)) {
-		// System.out.println(getText(elImage));
-		// click(elImage);
-		// break;
-		// }
-		// }
-		// }
-		// }
-
 		click(deskLinkZapier);
-		//go to the tab opened
+		// go to the tab opened
 		tabSwitch();
-		//click on the Log in button
+		// click on the Log in button
 		click(logInButton);
-		//enter invalid email address
+		// enter invalid email address
 		fillText(emailField, email);
-		//click "continue"
+		// click "continue"
 		click(continueButton);
 	}
 
@@ -91,7 +72,6 @@ public class IntegrationsPage extends BasePage {
 		// click on the button "Try our new company plan"
 		click(tryCompanyPlanButton);
 		sleep(500);
-
 	}
 
 	public boolean isZapiarForCompaniesHeader(String header) {

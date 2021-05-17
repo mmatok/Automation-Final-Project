@@ -1,12 +1,10 @@
 package involveme_pageobjects;
 
-import java.util.Set;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginPage extends BasePage {
+public class LoginPage extends TopMenu {
 
 	@FindBy(css = ".btn.btn-secondary")
 	WebElement SeeHowItWorksButton;
@@ -37,10 +35,7 @@ public class LoginPage extends BasePage {
 	public void seeHowIfWorks() {
 		click(SeeHowItWorksButton);
 		// go to the new tab
-		Set<String> list = driver.getWindowHandles();
-		for (String win : list) {
-			driver.switchTo().window(win);
-		}
+		tabSwitch();
 	}
 
 	// for test #6

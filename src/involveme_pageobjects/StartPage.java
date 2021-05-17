@@ -1,14 +1,13 @@
 package involveme_pageobjects;
 
 import java.util.List;
-import java.util.Set;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class StartPage extends BasePage {
+public class StartPage extends TopMenu {
 
 	@FindBy(css = ".navbar-collapse.collapse.scroll-nav.clearfix > ul > li:nth-child(1) > div")
 	WebElement products;
@@ -30,7 +29,7 @@ public class StartPage extends BasePage {
 	WebElement privacyPolicy;
 	@FindBy(css = ".row.legal-content >h2")
 	WebElement privacyPolicyHeader;
-	@FindBy(css = ".navbar-collapse.collapse.scroll-nav.clearfix > ul>li:nth-child(5)>ul>li:nth-child(4)>a")
+	@FindBy(css = ".navigation.clearfix li:nth-child(5) ul li:nth-child(4) a")
 	WebElement helpCenter;
 	@FindBy(css = ".search__input.js__search-input.o__ltr")
 	WebElement searchBar;
@@ -72,24 +71,20 @@ public class StartPage extends BasePage {
 				System.out.println(getText(headlineList.get(i)));
 				scrollDown(500);
 				sleep(2000);
-				//click on the playlist 
+				// click on the playlist
 				List<WebElement> playList = driver.findElements(By.cssSelector(".playlist-headline a"));
 				click(playList.get(i));
 				break;
 			}
 		}
 		// go to the new tab
-		Set<String> list = driver.getWindowHandles();
-		for (String win : list) {
-			driver.switchTo().window(win);
-		}
+		tabSwitch();
 	}
 
 	// for test #2
 	public boolean isCorrectHeader(String header) {
 		System.out.println(getText(playlistHeader));
 		if (getText(playlistHeader).equalsIgnoreCase(header)) {
-
 			return true;
 		}
 		return false;
@@ -118,17 +113,13 @@ public class StartPage extends BasePage {
 		click(recources);
 		click(helpCenter);
 		// move to a new tab
-		Set<String> tabList = driver.getWindowHandles();
-		for (String tab : tabList) {
-			driver.switchTo().window(tab);
-		}
+		tabSwitch();
 		// add search text and click enter
 		fillText(searchBar, searchText);
 		searchBar.sendKeys(Keys.ENTER);
 		sleep(2000);
 		// get the result link and click on the change password link
-		List<WebElement> resultsList = driver
-				.findElements(By.cssSelector(".article__preview.intercom-force-break .c__primary"));
+		List<WebElement> resultsList = driver.findElements(By.cssSelector(".article__preview.intercom-force-break .c__primary"));
 		for (WebElement el : resultsList) {
 			if (el.getText().equalsIgnoreCase(searchText)) {
 				click(el);

@@ -45,5 +45,4 @@ public class TopMenu extends BasePage {
 	public void goToAffiliateProgram() {
 		click(affiliateProgram);
 	}
-
 }

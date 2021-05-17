@@ -2,21 +2,14 @@ package involveme_tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import involveme_pageobjects.AffiliateProgramPage;
-import involveme_pageobjects.LoginPage;
-import involveme_pageobjects.StartPage;
 import involveme_pageobjects.TopMenu;
 
 public class AffiliateProgramPageTest extends BaseTest {
 
 	// login to website & go to Affiliate Program page
 	@Test
-	public void tc01_login() {
-		StartPage startpage = new StartPage(driver);
-		startpage.openLoginPage();
-		LoginPage loginpage = new LoginPage(driver);
-		loginpage.login("mmatok19@gmail.com", "Michal123456");
+	public void tc01_goToPage() {
 		// go to Affiliate Program page
 		TopMenu menu = new TopMenu(driver);
 		menu.goToAffiliateProgram();
@@ -27,14 +20,14 @@ public class AffiliateProgramPageTest extends BaseTest {
 	@Test
 	public void tc02_AffiliateprogramTerms() {
 		AffiliateProgramPage affiliateProgramPage = new AffiliateProgramPage(driver);
-		affiliateProgramPage.AffiliateProgramTerms();
-		tabSwitch();
+		affiliateProgramPage.affiliateProgramTerms();
+		affiliateProgramPage.tabSwitch();
 		sleep(2000);
 		// check the header
 		Assert.assertTrue(affiliateProgramPage.isTermsHeader("Affiliate Program Terms & Conditions"));
 		// close the tab
 		affiliateProgramPage.close();
-		tabSwitch();
+		affiliateProgramPage.backToMainWindow();
 	}
 
 	// Test #39
@@ -45,7 +38,6 @@ public class AffiliateProgramPageTest extends BaseTest {
 		// check error message
 		String actual = affiliateProgramPage.checkErrorMsg();
 		Assert.assertEquals(actual, "Invalid Email or password.");
-
 	}
 
 	// Test #40
@@ -56,5 +48,4 @@ public class AffiliateProgramPageTest extends BaseTest {
 		// check the header
 		Assert.assertTrue(affiliateProgramPage.isForgotPassErrorMsg("not found"));
 	}
-
 }

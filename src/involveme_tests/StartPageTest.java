@@ -7,6 +7,11 @@ import involveme_pageobjects.StartPage;
 
 public class StartPageTest extends BaseTest {
 
+	@Override
+	public void setupLogin() {
+		super.setupLogin();
+	}
+
 	// test#1
 	@Test
 	public void tc01_productsTest() {
@@ -29,9 +34,8 @@ public class StartPageTest extends BaseTest {
 		// check the page header
 		Assert.assertTrue(startpage.isCorrectHeader("Making a Calculator"));
 		startpage.close();
-		tabSwitch();
+		startpage.backToMainWindow();
 		sleep(2000);
-
 	}
 
 	// test#3
@@ -56,8 +60,7 @@ public class StartPageTest extends BaseTest {
 		Assert.assertEquals(actual, "Change Password");
 		sleep(500);
 		// close the current tab
-		startpage.close();
-		tabSwitch();
+		faqPage.close();
+		startpage.backToMainWindow();
 	}
-
 }

@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class FaqPage extends BasePage {
+public class FaqPage extends TopMenu {
 
 	@FindBy(css = ".t__h1")
 	WebElement changePasswordHeader;
@@ -23,12 +23,17 @@ public class FaqPage extends BasePage {
 	}
 
 	// for test #32
-	public String PersonalDataHeader() {
+	public String personalDataHeader() {
 		return getText(personalDataCollectHeader);
 	}
 
 	// for test #35
 	public String convertKitIntegrationHeader() {
 		return getText(convertKitHeader);
+	}
+
+	@Override
+	public void close() {
+		super.close();
 	}
 }

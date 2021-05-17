@@ -7,21 +7,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 
-public class BasePage {
-
+public abstract class BasePage {
 	WebDriver driver;
 	Actions actions;
+	String mainWindow;
 
 	public BasePage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 		actions = new Actions(driver);
-
 	}
 
 	public void click(WebElement el) {
 		el.click();
-
 	}
 
 	public String getText(WebElement el) {
@@ -67,12 +65,17 @@ public class BasePage {
 
 	// switch between tabs
 	public void tabSwitch() {
+		mainWindow = driver.getWindowHandle();
 		Set<String> list = driver.getWindowHandles();
 		for (String win : list) {
 			driver.switchTo().window(win);
 		}
 	}
-
+	
+	public void backToMainWindow() {
+		driver.switchTo().window(mainWindow);
+	}
+	
 	public void close() {
 		driver.close();
 	}

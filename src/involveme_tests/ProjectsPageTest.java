@@ -5,9 +5,7 @@ import org.testng.annotations.Test;
 import involveme_pageobjects.AnalyticsPage;
 import involveme_pageobjects.EditorPage;
 import involveme_pageobjects.IntegrationsPage;
-import involveme_pageobjects.LoginPage;
 import involveme_pageobjects.ProjectsPage;
-import involveme_pageobjects.StartPage;
 import involveme_pageobjects.TemplatesPage;
 import involveme_pageobjects.TopMenu;
 
@@ -15,11 +13,7 @@ public class ProjectsPageTest extends BaseTest {
 
 	// login to website & go to Projects page
 	@Test
-	public void tc01_login() {
-		StartPage startpage = new StartPage(driver);
-		startpage.openLoginPage();
-		LoginPage loginpage = new LoginPage(driver);
-		loginpage.login("mmatok19@gmail.com", "Michal123456");
+	public void tc01_goToPage() {
 		// go to Projects page
 		TopMenu menu = new TopMenu(driver);
 		menu.goToProjects();
@@ -31,7 +25,7 @@ public class ProjectsPageTest extends BaseTest {
 	public void tc02_CreateProject() {
 		ProjectsPage projectsPage = new ProjectsPage(driver);
 		projectsPage.createAProject("Payment Form");
-		sleep(4000);
+		sleep(2000);
 		// choose the template "Design Assets Subscription"
 		TemplatesPage templatesPage = new TemplatesPage(driver);
 		templatesPage.chooseTemplate("Design Assets Subscription");
@@ -44,7 +38,6 @@ public class ProjectsPageTest extends BaseTest {
 		sleep(2000);
 		// click "Save@exit"
 		editorPage.saveAndExitProject();
-
 	}
 
 	// Test # 24
@@ -96,7 +89,7 @@ public class ProjectsPageTest extends BaseTest {
 	public void tc06_CreateNewWorkspace() {
 		// create new workspace
 		ProjectsPage projectsPage = new ProjectsPage(driver);
-		projectsPage.NewWorkspace("Michal's workspace");
+		projectsPage.newWorkspace("Michal's workspace");
 		sleep(500);
 		// check message in the new workspace
 		String actual = projectsPage.newWorkspaceMsg();
@@ -119,5 +112,4 @@ public class ProjectsPageTest extends BaseTest {
 		ProjectsPage projectsPage = new ProjectsPage(driver);
 		projectsPage.projectSearch("payment project");
 	}
-
 }

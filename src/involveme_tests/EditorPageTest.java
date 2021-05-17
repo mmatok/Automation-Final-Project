@@ -3,9 +3,7 @@ package involveme_tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import involveme_pageobjects.EditorPage;
-import involveme_pageobjects.LoginPage;
 import involveme_pageobjects.ProjectsPage;
-import involveme_pageobjects.StartPage;
 import involveme_pageobjects.TemplatesPage;
 import involveme_pageobjects.TopMenu;
 
@@ -13,11 +11,7 @@ public class EditorPageTest extends BaseTest {
 
 	// login to website & go to Templates page
 	@Test
-	public void tc01_login() {
-		StartPage startpage = new StartPage(driver);
-		startpage.openLoginPage();
-		LoginPage loginpage = new LoginPage(driver);
-		loginpage.login("mmatok19@gmail.com", "Michal123456");
+	public void tc01_goToPage() {
 		// go to templates page
 		TopMenu menu = new TopMenu(driver);
 		menu.goToTemplates();
@@ -97,7 +91,7 @@ public class EditorPageTest extends BaseTest {
 		Assert.assertEquals(actual, "Chat with us");
 		// close the tab
 		editorPage.close();
-		tabSwitch();
+		editorPage.backToMainWindow();
 	}
 
 	// Test @22
@@ -112,7 +106,6 @@ public class EditorPageTest extends BaseTest {
 		projectsPage.projectSearch("Registration Form Michal");
 		// click on "Preview"
 		projectsPage.previewProject();
-		tabSwitch();
 		// check url
 		String url = driver.getCurrentUrl();
 		System.out.println("The url is " + url);
@@ -122,5 +115,6 @@ public class EditorPageTest extends BaseTest {
 		sleep(2000);
 		// close the tab to return to projects page
 		editorPage.close();
+		projectsPage.backToMainWindow();
 	}
 }

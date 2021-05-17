@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
-public class EditorPage extends BasePage {
+public class EditorPage extends TopMenu {
 
 	@FindBy(css = "[name='project_name']")
 	WebElement projectNameField;
@@ -60,7 +60,7 @@ public class EditorPage extends BasePage {
 	WebElement minute;
 	@FindBy(css = "#general-settings > div.p-4.md\\:py-6.md\\:pl-24.md\\:pr-24.flex.flex-wrap.bg-gray-100.rounded-b > button")
 	WebElement updateSettingsButton;
-	@FindBy(css = ".mb-4.hidden.md\\:block.h-10.py-2.px-4.text-base.rounded.border.border-gray-600.bg-transparent.text-gray-600.hover\\:bg-gray-700.hover\\:text-white.focus\\:outline-none.focus\\:shadow-outline.disabled\\:bg-gray-400.disabled\\:cursor-not-allowed")
+	@FindBy(css = ".w-40.mx-4.my-8.md\\:ml-0.md\\:my-0.mr-8.flex-shrink-0.md\\:sticky  a:nth-child(6)")
 	WebElement editProjectButton;
 	@FindBy(css = ".dropdown-toggle.text-right.nav-link")
 	WebElement helpButton;
@@ -130,8 +130,7 @@ public class EditorPage extends BasePage {
 	public void editAndSaveEl(String text, String subText) {
 		// click on the element "Register for our great service"
 		click(headerElement);
-		// in the content area on the right side in the heading text enter "Michal's
-		// website"
+		// in the content area on the right side in the heading text enter "Michal's website"
 		fillText(headingText, text);
 		// on the subline text enter "register for Michal's official website"
 		fillText(sublineText, subText);
@@ -153,7 +152,6 @@ public class EditorPage extends BasePage {
 		fillText(chooseColorBox, colorCode);
 		// click on button save&close
 		click(saveAndClose);
-
 	}
 
 	// for Test #19

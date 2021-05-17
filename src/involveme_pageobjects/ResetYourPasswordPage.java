@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class ResetYourPasswordPage extends BasePage {
+public class ResetYourPasswordPage extends TopMenu {
 
 	@FindBy(css = ".form-control.e-zoom-input")
 	WebElement EmailField;
@@ -20,18 +20,18 @@ public class ResetYourPasswordPage extends BasePage {
 	}
 
 	// for test #6
-	public void SendResetLink(String email) {
+	public void sendResetLink(String email) {
 		fillText(EmailField, email);
 		click(ResetLink);
 	}
 
 	// for test #6
-	public String ErrorMsg() {
+	public String errorMsg() {
 		return getText(errormsg);
 	}
 
 	// for test#6
-	public void GoToLoginPage() {
+	public void goToLoginPage() {
 		click(LoginButton);
 	}
 }

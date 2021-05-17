@@ -5,11 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
-public class AnalyticsPage extends BasePage {
+public class AnalyticsPage extends TopMenu {
 
-	@FindBy(css = ".px-4.lg\\:px-0.pb-3.pt-3.container.max-w-6xl.mx-auto.relative > h1")
+	@FindBy(css = ".bg-white.relative.w-screen.max-w-full.shadow div h1")
 	WebElement analyticsHeader;
-	@FindBy(css = ".max-w-6xl.flex.flex-wrap.md\\:flex-no-wrap.items-center.container.mx-auto.mt-8.bg-white.border-t-4.border-teal-600.rounded.text-teal-900.px-4.py-3.shadow-md > a")
+	@FindBy(css = "[role='alert'] a")
 	WebElement crossProjectButton;
 	@FindBy(css = ".nav-link.darken")
 	WebElement submissionsTab;
@@ -25,11 +25,11 @@ public class AnalyticsPage extends BasePage {
 	WebElement personalDataTab;
 	@FindBy(css = ".max-w-6xl.mx-auto.mt-8.md\\:mt-16.block > div > div > span > a")
 	WebElement personalDataCollect;
-	@FindBy(css = ".pt-3.pb-2.ml-auto.text-gray-600.text-lg.hover\\:text-gray-800.whitespace-no-wrap")
+	@FindBy(css = ".flex.container.max-w-6xl.mx-auto.relative a:nth-child(6)")
 	WebElement exportDataButton;
 	@FindBy(css = ".flex.items-center.rounded.px-4.py-4.w-full.bg-orange-500.mb-4 span")
 	WebElement errorMsg;
-	@FindBy(css = ".px-4.lg\\:px-0.pb-3.pt-3.container.max-w-6xl.mx-auto.relative > p > a > svg")
+	@FindBy(css = ".text-sm.text-gray-500.flex.items-baseline svg")
 	WebElement ResultsButton;
 
 	public AnalyticsPage(WebDriver driver) {
@@ -42,7 +42,7 @@ public class AnalyticsPage extends BasePage {
 	}
 
 	// for test #30
-	public void ProjectUserTracking() {
+	public void projectUserTracking() {
 		click(crossProjectButton);
 		click(submissionsTab);
 	}
@@ -53,7 +53,7 @@ public class AnalyticsPage extends BasePage {
 	}
 
 	// for test #30
-	public void OverallAnalytics() {
+	public void overallAnalytics() {
 		click(OverallAnalyticsButton);
 	}
 
@@ -77,13 +77,11 @@ public class AnalyticsPage extends BasePage {
 		click(personalDataCollect);
 		// go to the new tab
 		tabSwitch();
-
 	}
 
 	// for test #33
 	public void exportData() {
 		click(exportDataButton);
-
 	}
 
 	// for test #33
