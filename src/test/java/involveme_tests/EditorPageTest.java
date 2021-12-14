@@ -9,14 +9,14 @@ import involveme_pageobjects.TopMenu;
 
 public class EditorPageTest extends BaseTest {
 
-	 
+
 	@Test (description ="logins to website & goes to Templates page")
 	public void tc01_goToPage() {
 		// go to templates page
 		TopMenu menu = new TopMenu(driver);
 		menu.goToTemplates();
 	}
- 
+	//Test #15 (same as in TemplatesPageTests
 	@Test (description ="goes to template editing")
 	public void tc02_EditTemplate() {
 		TemplatesPage templatesPage = new TemplatesPage(driver);

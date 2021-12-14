@@ -8,7 +8,7 @@ import involveme_pageobjects.ProjectsPage;
 
 public class IntegrationsPageTest extends BaseTest {
 
-	
+
 	@Test (description ="login to website & go to Integrations page")
 	public void tc01_goToPage() {
 		// go to Integrations page

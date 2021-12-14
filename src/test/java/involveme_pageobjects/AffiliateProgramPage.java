@@ -6,11 +6,11 @@ import org.openqa.selenium.support.FindBy;
 
 public class AffiliateProgramPage extends TopMenu {
 
-	@FindBy(css = "#app-layout > div.container > p > a")
+	@FindBy(css = "#app-layout div div:nth-child(4) p a")
 	WebElement termsLink;
 	@FindBy(css = ".row.legal-content div h1")
 	WebElement termsHeader;
-	@FindBy(css = ".btn.btn-primary.btn-lg")
+	@FindBy(css = ".pt-6.pb-8.px-8.bg-gray-100.rounded-b.text-center > a > button")
 	WebElement joinButton;
 	@FindBy(css = "#new_puser > p > a")
 	WebElement logInHereLink;
@@ -86,4 +86,10 @@ public class AffiliateProgramPage extends TopMenu {
 		}
 		return false;
 	}
+	
+	//for test #41
+			public void switchBetweenWindows () {
+				close();
+				tabSwitch();
+			}
 }

@@ -24,7 +24,7 @@ public class IntegrationsPage extends TopMenu {
 	WebElement invalidEmailMsg;
 	@FindBy(css = ".css-swtojr-UniversalTopbar__group--medium .css-19v2u1m-UniversalTopbarLink a")
 	WebElement integrationLogIn;
-	@FindBy(css = ".css-hke35n-Button__buttonContent-Button--buttonContent > span")
+	@FindBy(css = ".css-vu8qc5-Button__buttonText-Button--buttonText")
 	WebElement tryCompanyPlanButton;
 	@FindBy(css = ".css-1n86ecc-Hero__info > h1")
 	WebElement zapierForCompaniesHeader;

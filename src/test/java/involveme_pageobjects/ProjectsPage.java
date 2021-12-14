@@ -40,6 +40,10 @@ public class ProjectsPage extends TopMenu {
 	WebElement deleteWorkspacePopupInput;
 	@FindBy(css = ".ml-auto button:nth-child(2)")
 	WebElement deleteWorkspacePopupDelete;
+	@FindBy(css = ".flex.justify-right.items-center > div > ul > li:nth-child(9) > button")
+	WebElement deleteProjectButton;
+	@FindBy(css = "#confirm-delete-button")
+	WebElement deleteProjectPopup;
 
 	public ProjectsPage(WebDriver driver) {
 		super(driver);
@@ -164,7 +168,7 @@ public class ProjectsPage extends TopMenu {
 		// click on delete button
 		click(deleteWorkspacePopupDelete);
 	}
-
+	
 	// for test #28
 	public boolean listOfWorkspaces(String name) {
 		// check if workspace exists in the list of workspaces
@@ -179,4 +183,22 @@ public class ProjectsPage extends TopMenu {
 		}
 		return workspaceNotExists;
 	}
+	
+		//for test #41
+	public void deleteProject (String projectName) {
+		// go to the new project - search project from the list of projects
+		List<WebElement>projectsList=driver.findElements(By.cssSelector(".leading-tight.text-lg.font-medium.truncate"));
+		for (int i = 0; i < projectsList.size(); i++) {
+			if (getText(projectsList.get(i)).equalsIgnoreCase(projectName)) {
+				// click on the arrow icon to open project's options from the list of arrows
+				List<WebElement> arrowsList = driver.findElements(By.cssSelector(".dropdown.relative"));
+				click(arrowsList.get(i));
+				// click on delete project 
+				click(deleteProjectButton);
+				click(deleteProjectPopup);
+				break;				
+			}			
+		}
+	}
+
 }
