@@ -3,12 +3,11 @@ package involveme_tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import involveme_pageobjects.AffiliateProgramPage;
-import involveme_pageobjects.ProjectsPage;
 import involveme_pageobjects.TopMenu;
 
 public class AffiliateProgramPageTest extends BaseTest {
 
-
+	
 	@Test (description ="logins to website & goes to Affiliate Program page")
 	public void tc01_goToPage() {
 		// go to Affiliate Program page
@@ -48,19 +47,5 @@ public class AffiliateProgramPageTest extends BaseTest {
 		affiliateProgramPage.forgotPass("michal@gmail.com");
 		// check the header
 		Assert.assertTrue(affiliateProgramPage.isForgotPassErrorMsg("not found"));
-		affiliateProgramPage.close();
-		affiliateProgramPage.backToMainWindow();
-		sleep(2000);
-	}
-	//Test #41
-	@Test (description="delete projects")
-	public void tc05_DeleteProjects() {
-		ProjectsPage projectspage = new ProjectsPage(driver);
-		//projectspage.switchBetweenWindows();
-		TopMenu menu = new TopMenu(driver);
-		menu.goToProjects();
-		projectspage.deleteProject("Registration Form Michal");
-		projectspage.deleteProject("payment project");
-
 	}
 }

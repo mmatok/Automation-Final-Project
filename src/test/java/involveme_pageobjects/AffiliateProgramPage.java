@@ -86,10 +86,4 @@ public class AffiliateProgramPage extends TopMenu {
 		}
 		return false;
 	}
-	
-	//for test #41
-			public void switchBetweenWindows () {
-				close();
-				tabSwitch();
-			}
 }
